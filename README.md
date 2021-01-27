@@ -9,7 +9,7 @@
   </a>
 </p>
 
-Simple human readable intervals
+Simple human readable intervals for those that don't want to go to time prison.
 
 Interval diff package for human readable values
 
