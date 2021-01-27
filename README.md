@@ -12,7 +12,7 @@ Simple human readable intervals
 
 Interval diff package for human readable values
 
-> Inspiration take from [shleemy](https://github.com/briannesbitt/shleemy)
+> Inspiration take from [carbon](https://github.com/briannesbitt/carbon)
 
 ### Install
 
