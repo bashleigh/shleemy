@@ -19,7 +19,10 @@ $ yarn add carbon-dating
 ```ts
 import {carbon} from 'carbon-dating';
 
-console.log(carbon(new Date()).forHumans); // "just now"
+const interval = carbon(new Date());
+
+console.log(interval.forHumans); // "just now"
+console.log(interval.direction); // "present"
 ```
 
 ```ts
@@ -28,7 +31,7 @@ import {carbon} from 'carbon-dating';
 const date = new Date();
 date.setMinutes(date.getMinutes() - 3);
 
-console.log(carbon(new Date()).forHumans); // "3 minutes ago"
+console.log(carbon(date).forHumans); // "3 minutes ago"
 ```
 
 ```ts
@@ -37,7 +40,21 @@ import {carbon} from 'carbon-dating';
 const date = new Date();
 date.setMinutes(date.getMinutes() - 100);
 
-console.log(carbon(new Date()).forHumans); // "an hour ago"
+console.log(carbon(date).forHumans); // "an hour ago"
+```
+
+##### Future
+
+```ts
+import {carbon} from 'carbon-dating';
+
+const date = new Date();
+date.setMinutes(date.getMinutes() + 100);
+
+const interval = carbon(date);
+
+console.log(interval.forHumans); // "in an hour"
+console.log(interval.direction); // "future"
 ```
 
 ##### Values
