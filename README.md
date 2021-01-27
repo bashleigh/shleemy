@@ -2,7 +2,7 @@
 
 <p align="center">
   <a target="_blank" href="https://rickandmorty.fandom.com/wiki/Shleemypants">
-    <img src="https://static.wikia.nocookie.net/rickandmorty/images/4/4d/Shleemy.png/revision/latest/scale-to-width-down/310?cb=20190830174941" alt="shleemypants"/>
+    <img width="150" src="https://static.wikia.nocookie.net/rickandmorty/images/4/4d/Shleemy.png/revision/latest/scale-to-width-down/310?cb=20190830174941" alt="shleemypants"/>
   </a>
 </p>
 
