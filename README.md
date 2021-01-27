@@ -1,5 +1,7 @@
 ## Carbon dating
 
+<img src="https://github.com/bashleigh/carbon/workflows/Tests/badge.svg"/>
+
 Simple human readable intervals
 
 Interval diff package for human readable values
