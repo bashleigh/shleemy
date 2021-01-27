@@ -25,6 +25,7 @@ export class ShleemyInterval {
     readonly second: Date,
     readonly rounding: 'ceil' | 'floor' = 'floor',
     ) {
+      console.log(second.getTime(), first.getTime() < second.getTime());
     this.direction =
       first.getTime() < second.getTime()
         ? "past"
@@ -134,11 +135,11 @@ const resolveDate = (date: string | Date) =>
 
 export const shleemy = (
   date: string | Date,
-  options?: { from?: Date | string, rounding?: 'ceil' | 'floor' }
+  options?: { toDate?: Date | string, rounding?: 'ceil' | 'floor' }
 ): ShleemyInterval => {
   return new ShleemyInterval(
     resolveDate(date),
-    resolveDate(options?.from || new Date()),
+    resolveDate(options?.toDate || new Date()),
     options?.rounding,
   );
 };

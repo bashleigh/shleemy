@@ -257,4 +257,31 @@ describe("shleemyInterval", () => {
       expect(result).toBe("in 2 years");
     });
   });
+  describe("start", () => {
+    it("future", () => {
+      const date = new Date();
+      date.setFullYear(new Date().getFullYear() + 2);
+      const toDate = new Date();
+      toDate.setFullYear(new Date().getFullYear() - 3);
+
+      const result = shleemy(date, {
+        toDate,
+      }).forHumans;
+
+      expect(result).toBe("in 5 years");
+    });
+
+    it("past", () => {
+      const date = new Date();
+      date.setFullYear(new Date().getFullYear() + 2);
+      const toDate = new Date();
+      toDate.setFullYear(new Date().getFullYear() + 3);
+
+      const interval = shleemy(date, {
+        toDate,
+      });
+
+      expect(interval.forHumans).toBe("a year ago");
+    });
+  });
 });
