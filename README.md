@@ -101,6 +101,7 @@ console.log('months', interval.months);
 console.log('years', interval.years);
 console.log('direction', interval.direction);
 ```
+> All properties will be positive values. You cannot have -3 days in the 4th dimension. Use `direction` for past/present/future value
 
 ### Options
 
@@ -122,5 +123,5 @@ console.log(
       future: (value, interval) => `in ${value} ${ShleemyInterval.pluralInterval(value, interval)} and you get the idea`, // default: ShleemyInterval.toHumanReadableFuture
     }
   }).days
-); // -8
+); // 8
 ```

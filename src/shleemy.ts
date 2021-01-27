@@ -166,6 +166,11 @@ export class ShleemyInterval {
 const resolveDate = (date: string | Date) =>
   typeof date === "string" ? new Date(date) : date;
 
+/**
+ * Factory to build ShleemyInterval
+ * @param date
+ * @param options
+ */
 export const shleemy = (
   date: string | Date,
   options?: {
