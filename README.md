@@ -1,17 +1,17 @@
-## Carbon dating
+## shleemy
 
-<img src="https://github.com/bashleigh/carbon/workflows/Tests/badge.svg"/>
+<img src="https://github.com/bashleigh/shleemy/workflows/Tests/badge.svg"/>
 
 Simple human readable intervals
 
 Interval diff package for human readable values
 
-> Inspiration take from Carbon::Carbon
+> Inspiration take from [shleemy](https://github.com/briannesbitt/shleemy)
 
 ### Install
 
 ```bash
-$ yarn add carbon-dating
+$ yarn add shleemy
 ```
 
 ### Usage
@@ -19,42 +19,42 @@ $ yarn add carbon-dating
 ##### Basic
 
 ```ts
-import { carbon } from "carbon-dating";
+import { shleemy } from "shleemy";
 
-const interval = carbon(new Date());
+const interval = shleemy(new Date());
 
 console.log(interval.forHumans); // "just now"
 console.log(interval.direction); // "present"
 ```
 
 ```ts
-import { carbon } from "carbon-dating";
+import { shleemy } from "shleemy";
 
 const date = new Date();
 date.setMinutes(date.getMinutes() - 3);
 
-console.log(carbon(date).forHumans); // "3 minutes ago"
-console.log(carbon(date).direction); // "past"
+console.log(shleemy(date).forHumans); // "3 minutes ago"
+console.log(shleemy(date).direction); // "past"
 ```
 
 ```ts
-import { carbon } from "carbon-dating";
+import { shleemy } from "shleemy";
 
 const date = new Date();
 date.setMinutes(date.getMinutes() - 100);
 
-console.log(carbon(date).forHumans); // "an hour ago"
+console.log(shleemy(date).forHumans); // "an hour ago"
 ```
 
 ##### Future
 
 ```ts
-import { carbon } from "carbon-dating";
+import { shleemy } from "shleemy";
 
 const date = new Date();
 date.setMinutes(date.getMinutes() + 100);
 
-const interval = carbon(date);
+const interval = shleemy(date);
 
 console.log(interval.forHumans); // "in an hour"
 console.log(interval.direction); // "future"
@@ -63,22 +63,22 @@ console.log(interval.direction); // "future"
 ##### Values
 
 ```ts
-import { carbon } from "carbon-dating";
+import { shleemy } from "shleemy";
 
 const date = new Date();
 date.setHours(date.getHours() - 3);
 
-console.log(carbon(date).days); // 3
+console.log(shleemy(date).days); // 3
 ```
 
 ```ts
-import { carbon } from "carbon-dating";
+import { shleemy } from "shleemy";
 
 const date = new Date();
 date.setDays(date.getDays() - 12);
 
-console.log(carbon(date).days); // 12
-console.log(carbon(date).week); // 1
+console.log(shleemy(date).days); // 12
+console.log(shleemy(date).week); // 1
 ```
 
 ### Options
@@ -88,7 +88,7 @@ console.log(carbon(date).week); // 1
 default: `new Date()` (from now)
 
 ```ts
-import { carbon } from "carbon-dating";
+import { shleemy } from "shleemy";
 
 const date = new Date();
 date.setDays(date.getDays() - 12);
@@ -97,7 +97,7 @@ const start = new Date();
 start.setDats(start.getDays() - 20);
 
 console.log(
-  carbon(date, {
+  shleemy(date, {
     from: start,
   }).days
 ); // 8
