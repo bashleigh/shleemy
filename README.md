@@ -1,12 +1,12 @@
 ## shleemy
 
 <p align="center">
-  <a href="https://rickandmorty.fandom.com/wiki/Shleemypants">
-    <img src="https://static.wikia.nocookie.net/rickandmorty/images/4/4d/Shleemy.png/revision/latest/scale-to-width-down/310?cb=20190830174941" alt="shleemypants">
+  <a target="_blank" href="https://rickandmorty.fandom.com/wiki/Shleemypants">
+    <img src="https://static.wikia.nocookie.net/rickandmorty/images/4/4d/Shleemy.png/revision/latest/scale-to-width-down/310?cb=20190830174941" alt="shleemypants"/>
   </a>
 </p>
 
-<img src="https://github.com/bashleigh/shleemy/workflows/Tests/badge.svg"/>
+<img src="https://github.com/bashleigh/shleemy/workflows/Tests/badge.svg" alt="test badge"/>
 
 Simple human readable intervals
 
