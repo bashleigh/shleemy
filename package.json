@@ -23,8 +23,7 @@
   "keywords": [],
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
-    "build": "rm -rf ./dist && tsc && npm run build:index",
-    "build:index": "rm -rf ./index.js ./index.d.ts && tsc -d --skipLibCheck ./index.ts",
+    "build": "rm -rf ./dist && tsc",
     "prepublish": "npm run format && npm run build",
     "test": "jest"
   },
