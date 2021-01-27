@@ -1,9 +1,4 @@
 ## shleemy
-
-Simple human readable intervals
-
-Interval diff package for human readable values
-
 <p>
   <img src="https://github.com/bashleigh/shleemy/workflows/Tests/badge.svg" alt="test badge"/>
   <a href="https://www.npmjs.com/package/shleemy"><img src="https://img.shields.io/npm/v/shleemy.svg"/></a>
@@ -13,6 +8,11 @@ Interval diff package for human readable values
     <img width="150" src="https://static.wikia.nocookie.net/rickandmorty/images/4/4d/Shleemy.png/revision/latest/scale-to-width-down/310?cb=20190830174941" alt="shleemypants"/>
   </a>
 </p>
+
+Simple human readable intervals
+
+Interval diff package for human readable values
+
 
 > Inspiration take from [Carbon](https://github.com/briannesbitt/carbon)
 
