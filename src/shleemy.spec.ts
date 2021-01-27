@@ -240,7 +240,7 @@ describe("shleemyInterval", () => {
       console.log(
         date,
         shleemy(new Date(date.getTime())).years,
-        shleemy(new Date(date.getTime())).months
+        shleemy(new Date(date.getTime())).months,
       );
 
       const result = shleemy(new Date(date.getTime())).forHumans;
@@ -296,9 +296,12 @@ describe("shleemyInterval", () => {
         humanReadable: {
           future: (value, interval) => {
             expect(true).toBeTruthy();
-            return `in fucking ${value} ${ShleemyInterval.pluralInterval(value, interval)}, Morty.`;
+            return `in fucking ${value} ${ShleemyInterval.pluralInterval(
+              value,
+              interval,
+            )}, Morty.`;
           },
-        }
+        },
       });
 
       expect(interval.forHumans).toBe("in fucking 2 years, Morty.");
@@ -312,9 +315,12 @@ describe("shleemyInterval", () => {
         humanReadable: {
           past: (value, interval) => {
             expect(true).toBeTruthy();
-            return `${value} long, fucking ${ShleemyInterval.pluralInterval(value, interval)}, Morty.`;
+            return `${value} long, fucking ${ShleemyInterval.pluralInterval(
+              value,
+              interval,
+            )}, Morty.`;
           },
-        }
+        },
       });
 
       expect(interval.forHumans).toBe("2 long, fucking years, Morty.");

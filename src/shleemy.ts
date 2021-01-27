@@ -113,25 +113,37 @@ export class ShleemyInterval {
 
   static pluralInterval = (
     value: number,
-    interval: TimeIntervalLabel
+    interval: TimeIntervalLabel,
   ): string =>
     value === 1 ? interval.substring(0, interval.length - 1) : interval;
 
   private toFutureHumanReadable = (
     value: number,
-    interval: TimeIntervalLabel
-  ): string => this.humanReadable && this.humanReadable.future ? this.humanReadable.future(value, interval) :
-    `in ${
-      value === 1 ? (interval === TimeIntervalLabel.HOURS ? "an" : "a") : value
-    } ${ShleemyInterval.pluralInterval(value, interval)}`;
+    interval: TimeIntervalLabel,
+  ): string =>
+    this.humanReadable && this.humanReadable.future
+      ? this.humanReadable.future(value, interval)
+      : `in ${
+          value === 1
+            ? interval === TimeIntervalLabel.HOURS
+              ? "an"
+              : "a"
+            : value
+        } ${ShleemyInterval.pluralInterval(value, interval)}`;
 
   private toPastHumanReadable = (
     value: number,
-    interval: TimeIntervalLabel
-  ): string => this.humanReadable && this.humanReadable.past ? this.humanReadable.past(value, interval) :
-    `${
-      value === 1 ? (interval === TimeIntervalLabel.HOURS ? "an" : "a") : value
-    } ${ShleemyInterval.pluralInterval(value, interval)} ago`;
+    interval: TimeIntervalLabel,
+  ): string =>
+    this.humanReadable && this.humanReadable.past
+      ? this.humanReadable.past(value, interval)
+      : `${
+          value === 1
+            ? interval === TimeIntervalLabel.HOURS
+              ? "an"
+              : "a"
+            : value
+        } ${ShleemyInterval.pluralInterval(value, interval)} ago`;
 
   get forHumans(): string {
     if (this.diff === 0 || this.direction === "present") {
@@ -163,7 +175,7 @@ export const shleemy = (
       future?: (value: number, interval: TimeIntervalLabel) => string;
       past?: (value: number, interval: TimeIntervalLabel) => string;
     };
-  }
+  },
 ): ShleemyInterval => {
   return new ShleemyInterval(
     resolveDate(date),
