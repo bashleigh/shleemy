@@ -23,7 +23,11 @@ export class ShleemyInterval {
   constructor(
     readonly first: Date,
     readonly second: Date,
-    readonly rounding: "ceil" | "floor" = "floor"
+    readonly rounding: "ceil" | "floor" = "floor",
+    private readonly humanReadable?: {
+      future?: (value: number, interval: TimeIntervalValue) => string;
+      past?: (value: number, interval: TimeIntervalValue) => string;
+    },
   ) {
     this.direction =
       first.getTime() < second.getTime()
@@ -107,7 +111,7 @@ export class ShleemyInterval {
     return value;
   }
 
-  private pluralInterval = (
+  static pluralInterval = (
     value: number,
     interval: TimeIntervalValue
   ): string =>
@@ -116,18 +120,18 @@ export class ShleemyInterval {
   private toFutureHumanReadable = (
     value: number,
     interval: TimeIntervalValue
-  ): string =>
+  ): string => this.humanReadable && this.humanReadable.future ? this.humanReadable.future(value, interval) :
     `in ${
       value === 1 ? (interval === TimeIntervalValue.HOURS ? "an" : "a") : value
-    } ${this.pluralInterval(value, interval)}`;
+    } ${ShleemyInterval.pluralInterval(value, interval)}`;
 
   private toPastHumanReadable = (
     value: number,
     interval: TimeIntervalValue
-  ): string =>
+  ): string => this.humanReadable && this.humanReadable.past ? this.humanReadable.past(value, interval) :
     `${
       value === 1 ? (interval === TimeIntervalValue.HOURS ? "an" : "a") : value
-    } ${this.pluralInterval(value, interval)} ago`;
+    } ${ShleemyInterval.pluralInterval(value, interval)} ago`;
 
   get forHumans(): string {
     if (this.diff === 0 || this.direction === "present") {
@@ -141,6 +145,10 @@ export class ShleemyInterval {
       ? this.toFutureHumanReadable(value, fullIntervalName)
       : this.toPastHumanReadable(value, fullIntervalName);
   }
+
+  toString(): string {
+    return this.forHumans;
+  }
 }
 
 const resolveDate = (date: string | Date) =>
@@ -148,11 +156,19 @@ const resolveDate = (date: string | Date) =>
 
 export const shleemy = (
   date: string | Date,
-  options?: { toDate?: Date | string; rounding?: "ceil" | "floor" }
+  options?: {
+    toDate?: Date | string;
+    rounding?: "ceil" | "floor";
+    humanReadable?: {
+      future?: (value: number, interval: TimeIntervalValue) => string;
+      past?: (value: number, interval: TimeIntervalValue) => string;
+    };
+  }
 ): ShleemyInterval => {
   return new ShleemyInterval(
     resolveDate(date),
     resolveDate(options?.toDate || new Date()),
-    options?.rounding
+    options?.rounding,
+    options?.humanReadable,
   );
 };

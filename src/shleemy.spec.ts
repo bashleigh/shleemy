@@ -1,4 +1,4 @@
-import { shleemy } from "./shleemy";
+import { shleemy, ShleemyInterval } from "./shleemy";
 
 describe("shleemyInterval", () => {
   describe("past", () => {
@@ -257,7 +257,7 @@ describe("shleemyInterval", () => {
       expect(result).toBe("in 2 years");
     });
   });
-  describe("start", () => {
+  describe("toDate", () => {
     it("future", () => {
       const date = new Date();
       date.setFullYear(new Date().getFullYear() + 2);
@@ -284,6 +284,40 @@ describe("shleemyInterval", () => {
 
       expect(interval.forHumans).toBe("a year ago");
       expect(interval.direction).toBe("past");
+    });
+  });
+
+  describe("readables", () => {
+    it("future", () => {
+      const date = new Date();
+      date.setFullYear(new Date().getFullYear() + 2);
+
+      const interval = shleemy(date, {
+        humanReadable: {
+          future: (value, interval) => {
+            expect(true).toBeTruthy();
+            return `in fucking ${value} ${ShleemyInterval.pluralInterval(value, interval)}, Morty.`;
+          },
+        }
+      });
+
+      expect(interval.forHumans).toBe("in fucking 2 years, Morty.");
+    });
+
+    it("past", () => {
+      const date = new Date();
+      date.setFullYear(new Date().getFullYear() - 2);
+
+      const interval = shleemy(date, {
+        humanReadable: {
+          past: (value, interval) => {
+            expect(true).toBeTruthy();
+            return `${value} long, fucking ${ShleemyInterval.pluralInterval(value, interval)}, Morty.`;
+          },
+        }
+      });
+
+      expect(interval.forHumans).toBe("2 long, fucking years, Morty.");
     });
   });
 });

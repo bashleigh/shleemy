@@ -105,7 +105,7 @@ console.log('direction', interval.direction);
 ### Options
 
 ```ts
-import { shleemy } from "shleemy";
+import { shleemy, ShleemyInterval } from "shleemy";
 
 const date = new Date();
 date.setDays(date.getDays() - 12);
@@ -117,6 +117,10 @@ console.log(
   shleemy(date, {
     toDate: toDate, // default: new Date() (now)
     rounding: 'ceil', // default: floor
+    humanReadable: {
+      past: (value, interval) => `${value} ${ShleemyInterval.pluralInterval(value, interval)} yonders ago`, // default: ShleemyInterval.toHumanReadablePast
+      future: (value, interval) => `in ${value} ${ShleemyInterval.pluralInterval(value, interval)} and you get the idea`, // default: ShleemyInterval.toHumanReadableFuture
+    }
   }).days
 ); // -8
 ```
