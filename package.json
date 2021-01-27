@@ -1,6 +1,6 @@
 {
   "name": "shleemy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "src/index.ts",
   "devDependencies": {
     "@types/jest": "^26.0.20",
