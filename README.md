@@ -110,12 +110,12 @@ import { shleemy } from "shleemy";
 const date = new Date();
 date.setDays(date.getDays() - 12);
 
-const start = new Date();
-start.setDats(start.getDays() - 20);
+const toDate = new Date();
+toDate.setDats(toDate.getDays() - 20);
 
 console.log(
   shleemy(date, {
-    from: start, // default: new Date() (now)
+    toDate: toDate, // default: new Date() (now)
     rounding: 'ceil', // default: floor
   }).days
 ); // 8
