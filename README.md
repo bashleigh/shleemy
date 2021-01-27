@@ -104,10 +104,6 @@ console.log('direction', interval.direction);
 
 ### Options
 
-#### From date
-
-default: `new Date()` (from now)
-
 ```ts
 import { shleemy } from "shleemy";
 
@@ -119,7 +115,8 @@ start.setDats(start.getDays() - 20);
 
 console.log(
   shleemy(date, {
-    from: start,
+    from: start, // default: new Date() (now)
+    rounding: 'ceil', // default: floor
   }).days
 ); // 8
 ```

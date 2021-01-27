@@ -20,7 +20,11 @@ enum IntervalValues {
 export class ShleemyInterval {
   readonly diff: number;
   readonly direction: "future" | "past" | "present";
-  constructor(readonly first: Date, readonly second: Date) {
+  constructor(
+    readonly first: Date,
+    readonly second: Date,
+    readonly rounding: 'ceil' | 'floor' = 'floor',
+    ) {
     this.direction =
       first.getTime() < second.getTime()
         ? "past"
@@ -96,7 +100,7 @@ export class ShleemyInterval {
   get nearestInterval(): TimeIntervalValue {
     let value;
     Object.values(TimeIntervalValue).forEach(interval => {
-      if (Math.floor(this[interval]) > 0) {
+      if (Math[this.rounding](this[interval]) > 0) {
         value = interval;
       }
     });
@@ -109,7 +113,7 @@ export class ShleemyInterval {
     }
 
     const fullIntervalName = this.nearestInterval;
-    const value = Math.floor(this[fullIntervalName]);
+    const value = Math[this.rounding](this[fullIntervalName]);
     const intervalName =
       value === 1
         ? fullIntervalName.substring(0, fullIntervalName.length - 1)
@@ -130,10 +134,11 @@ const resolveDate = (date: string | Date) =>
 
 export const shleemy = (
   date: string | Date,
-  options?: { from: Date | string }
+  options?: { from?: Date | string, rounding?: 'ceil' | 'floor' }
 ): ShleemyInterval => {
   return new ShleemyInterval(
     resolveDate(date),
-    resolveDate(options?.from || new Date())
+    resolveDate(options?.from || new Date()),
+    options?.rounding,
   );
 };
