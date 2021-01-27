@@ -13,14 +13,19 @@ enum IntervalValues {
   SECONDS = 60,
   DAYS = 24,
   WEEKS = 7,
-  MONTHS = 21,
-  YEARS = 365.25,
+  MONTHS = 30,
+  YEARS = 365,
 }
 
 export class CarbonInterval {
   readonly diff: number;
+  readonly direction: "future" | "past";
   constructor(readonly first: Date, readonly second: Date) {
-    this.diff = Math.abs(first.getTime() - second.getTime());
+    this.direction = first.getTime() < second.getTime() ? "past" : "future";
+    this.diff =
+      this.direction === "future"
+        ? Math.abs(first.getTime() - second.getTime())
+        : Math.abs(first.getTime() - second.getTime());
   }
 
   get seconds(): number {
@@ -105,21 +110,25 @@ export class CarbonInterval {
         ? fullIntervalName.substring(0, fullIntervalName.length - 1)
         : fullIntervalName;
 
-    return `${
+    return `${this.direction === "future" ? "in " : ""}${
       value === 1
         ? fullIntervalName === TimeIntervalValue.HOURS
           ? "an"
           : "a"
         : value
-    } ${intervalName} ago`;
+    } ${intervalName}${this.direction === "past" ? " ago" : ""}`;
   }
 }
 
-const resolveDate = (date: string | Date) => typeof date === 'string' ? new Date(date) : date;
+const resolveDate = (date: string | Date) =>
+  typeof date === "string" ? new Date(date) : date;
 
 export const carbon = (
   date: string | Date,
   options?: { from: Date | string }
 ): CarbonInterval => {
-  return new CarbonInterval(resolveDate(date) , resolveDate(options?.from || new Date()));
+  return new CarbonInterval(
+    resolveDate(date),
+    resolveDate(options?.from || new Date())
+  );
 };
