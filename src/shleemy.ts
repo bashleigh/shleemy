@@ -1,4 +1,4 @@
-enum TimeIntervalValue {
+enum TimeIntervalLabel {
   SECONDS = "seconds",
   MINUTES = "minutes",
   HOURS = "hours",
@@ -25,8 +25,8 @@ export class ShleemyInterval {
     readonly second: Date,
     readonly rounding: "ceil" | "floor" = "floor",
     private readonly humanReadable?: {
-      future?: (value: number, interval: TimeIntervalValue) => string;
-      past?: (value: number, interval: TimeIntervalValue) => string;
+      future?: (value: number, interval: TimeIntervalLabel) => string;
+      past?: (value: number, interval: TimeIntervalLabel) => string;
     },
   ) {
     this.direction =
@@ -101,9 +101,9 @@ export class ShleemyInterval {
     );
   }
 
-  get nearestInterval(): TimeIntervalValue {
+  get nearestInterval(): TimeIntervalLabel {
     let value;
-    Object.values(TimeIntervalValue).forEach(interval => {
+    Object.values(TimeIntervalLabel).forEach(interval => {
       if (Math[this.rounding](this[interval]) > 0) {
         value = interval;
       }
@@ -113,24 +113,24 @@ export class ShleemyInterval {
 
   static pluralInterval = (
     value: number,
-    interval: TimeIntervalValue
+    interval: TimeIntervalLabel
   ): string =>
     value === 1 ? interval.substring(0, interval.length - 1) : interval;
 
   private toFutureHumanReadable = (
     value: number,
-    interval: TimeIntervalValue
+    interval: TimeIntervalLabel
   ): string => this.humanReadable && this.humanReadable.future ? this.humanReadable.future(value, interval) :
     `in ${
-      value === 1 ? (interval === TimeIntervalValue.HOURS ? "an" : "a") : value
+      value === 1 ? (interval === TimeIntervalLabel.HOURS ? "an" : "a") : value
     } ${ShleemyInterval.pluralInterval(value, interval)}`;
 
   private toPastHumanReadable = (
     value: number,
-    interval: TimeIntervalValue
+    interval: TimeIntervalLabel
   ): string => this.humanReadable && this.humanReadable.past ? this.humanReadable.past(value, interval) :
     `${
-      value === 1 ? (interval === TimeIntervalValue.HOURS ? "an" : "a") : value
+      value === 1 ? (interval === TimeIntervalLabel.HOURS ? "an" : "a") : value
     } ${ShleemyInterval.pluralInterval(value, interval)} ago`;
 
   get forHumans(): string {
@@ -160,8 +160,8 @@ export const shleemy = (
     toDate?: Date | string;
     rounding?: "ceil" | "floor";
     humanReadable?: {
-      future?: (value: number, interval: TimeIntervalValue) => string;
-      past?: (value: number, interval: TimeIntervalValue) => string;
+      future?: (value: number, interval: TimeIntervalLabel) => string;
+      past?: (value: number, interval: TimeIntervalLabel) => string;
     };
   }
 ): ShleemyInterval => {
