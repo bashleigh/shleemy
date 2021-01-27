@@ -14,7 +14,7 @@ Simple human readable intervals
 
 Interval diff package for human readable values
 
-> Inspiration take from [carbon](https://github.com/briannesbitt/carbon)
+> Inspiration take from [Carbon](https://github.com/briannesbitt/carbon)
 
 ### Install
 
@@ -22,10 +22,19 @@ Interval diff package for human readable values
 $ yarn add shleemy
 ```
 
+Or 
+
+```npm
+$ npm i shleemy
+```
+
 ### Usage
 
 ##### Basic
 
+Get human readable values with direction information
+
+**Present**
 ```ts
 import { shleemy } from "shleemy";
 
@@ -34,7 +43,7 @@ const interval = shleemy(new Date());
 console.log(interval.forHumans); // "just now"
 console.log(interval.direction); // "present"
 ```
-
+**Past**
 ```ts
 import { shleemy } from "shleemy";
 
@@ -44,31 +53,18 @@ date.setMinutes(date.getMinutes() - 3);
 console.log(shleemy(date).forHumans); // "3 minutes ago"
 console.log(shleemy(date).direction); // "past"
 ```
-
+**Future**
 ```ts
 import { shleemy } from "shleemy";
 
 const date = new Date();
-date.setMinutes(date.getMinutes() - 100);
+date.setMinutes(date.getMinutes() + 70);
 
-console.log(shleemy(date).forHumans); // "an hour ago"
+console.log(shleemy(date).forHumans); // "in an hour"
+console.log(shleemy(date).direction); // "future"
 ```
 
-##### Future
-
-```ts
-import { shleemy } from "shleemy";
-
-const date = new Date();
-date.setMinutes(date.getMinutes() + 100);
-
-const interval = shleemy(date);
-
-console.log(interval.forHumans); // "in an hour"
-console.log(interval.direction); // "future"
-```
-
-##### Values
+##### interval values
 
 ```ts
 import { shleemy } from "shleemy";
