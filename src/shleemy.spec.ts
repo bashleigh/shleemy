@@ -269,7 +269,7 @@ describe("shleemyInterval", () => {
       });
 
       expect(interval.forHumans).toBe("in 5 years");
-      expect(interval.direction).toBe('future');
+      expect(interval.direction).toBe("future");
     });
 
     it("past", () => {
@@ -283,7 +283,7 @@ describe("shleemyInterval", () => {
       });
 
       expect(interval.forHumans).toBe("a year ago");
-      expect(interval.direction).toBe('past');
+      expect(interval.direction).toBe("past");
     });
   });
 });
