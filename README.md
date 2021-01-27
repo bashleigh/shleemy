@@ -59,3 +59,24 @@ date.setDays(date.getDays() - 12);
 console.log(carbon(date).days); // 12
 console.log(carbon(date).week); // 1
 ```
+
+### Options
+
+
+#### From date
+
+default: `new Date()` (from now)
+
+```ts
+import {carbon} from 'carbon-dating';
+
+const date = new Date();
+date.setDays(date.getDays() - 12);
+
+const start = new Date();
+start.setDats(start.getDays() - 20);
+
+console.log(carbon(date, {
+  from: start,
+}).days); // 8
+```
