@@ -32,6 +32,7 @@ const date = new Date();
 date.setMinutes(date.getMinutes() - 3);
 
 console.log(carbon(date).forHumans); // "3 minutes ago"
+console.log(carbon(date).direction); // "past"
 ```
 
 ```ts
