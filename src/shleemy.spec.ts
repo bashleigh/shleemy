@@ -264,11 +264,12 @@ describe("shleemyInterval", () => {
       const toDate = new Date();
       toDate.setFullYear(new Date().getFullYear() - 3);
 
-      const result = shleemy(date, {
+      const interval = shleemy(date, {
         toDate,
-      }).forHumans;
+      });
 
-      expect(result).toBe("in 5 years");
+      expect(interval.forHumans).toBe("in 5 years");
+      expect(interval.direction).toBe('future');
     });
 
     it("past", () => {
@@ -282,6 +283,7 @@ describe("shleemyInterval", () => {
       });
 
       expect(interval.forHumans).toBe("a year ago");
+      expect(interval.direction).toBe('past');
     });
   });
 });

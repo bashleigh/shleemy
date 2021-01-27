@@ -118,5 +118,5 @@ console.log(
     toDate: toDate, // default: new Date() (now)
     rounding: 'ceil', // default: floor
   }).days
-); // 8
+); // -8
 ```

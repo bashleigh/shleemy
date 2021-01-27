@@ -25,7 +25,6 @@ export class ShleemyInterval {
     readonly second: Date,
     readonly rounding: 'ceil' | 'floor' = 'floor',
     ) {
-      console.log(second.getTime(), first.getTime() < second.getTime());
     this.direction =
       first.getTime() < second.getTime()
         ? "past"
