@@ -19,9 +19,9 @@ enum IntervalValues {
 
 export class CarbonInterval {
   readonly diff: number;
-  readonly direction: "future" | "past";
+  readonly direction: "future" | "past" | "present";
   constructor(readonly first: Date, readonly second: Date) {
-    this.direction = first.getTime() < second.getTime() ? "past" : "future";
+    this.direction = first.getTime() < second.getTime() ? "past" : first.getTime() === second.getTime() ? "present" : "future";
     this.diff =
       this.direction === "future"
         ? Math.abs(first.getTime() - second.getTime())
@@ -99,7 +99,7 @@ export class CarbonInterval {
   }
 
   get forHumans(): string {
-    if (this.diff === 0) {
+    if (this.diff === 0 || this.direction === "present") {
       return "just now";
     }
 
