@@ -1,6 +1,17 @@
-import { shleemy, ShleemyInterval } from "./shleemy";
+import { shleemy, ShleemyInterval, TimeIntervalLabel } from "./shleemy";
 
 describe("shleemyInterval", () => {
+  describe("types", () => {
+    it("values", () => {
+      const result = shleemy(new Date());
+
+      Object.values(TimeIntervalLabel).forEach((property) => {
+        expect(typeof result[property].value).toBe('number');
+        expect(typeof result[property].ceil).toBe('number');
+        expect(typeof result[property].floor).toBe('number');
+      });
+    });
+  });
   describe("past", () => {
     it("just now", () => {
       const result = shleemy(new Date()).forHumans;
@@ -236,12 +247,6 @@ describe("shleemyInterval", () => {
       const date = new Date();
       date.setFullYear(new Date().getFullYear() + 1);
       date.setHours(new Date().getHours() + 48);
-
-      console.log(
-        date,
-        shleemy(new Date(date.getTime())).years,
-        shleemy(new Date(date.getTime())).months,
-      );
 
       const result = shleemy(new Date(date.getTime())).forHumans;
 
