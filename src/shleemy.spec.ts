@@ -22,7 +22,7 @@ describe("shleemyInterval", () => {
     });
 
     it("ISO string input", () => {
-      const result = shleemy((new Date()).toISOString());
+      const result = shleemy(new Date().toISOString());
 
       expect(result.forHumans).toBe("just now");
     });
@@ -290,7 +290,7 @@ describe("shleemyInterval", () => {
       });
 
       expect(interval.forHumans).toBe("in 5 years");
-      expect(interval.direction).toBe("future");
+      expect(interval.tense).toBe("future");
     });
 
     it("past", () => {
@@ -304,7 +304,7 @@ describe("shleemyInterval", () => {
       });
 
       expect(interval.forHumans).toBe("a year ago");
-      expect(interval.direction).toBe("past");
+      expect(interval.tense).toBe("past");
     });
   });
 

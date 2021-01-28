@@ -19,7 +19,7 @@ enum IntervalValues {
 
 export class ShleemyInterval {
   readonly diff: number;
-  readonly direction: "future" | "past" | "present";
+  readonly tense: "future" | "past" | "present";
   constructor(
     readonly first: Date,
     readonly toDate: Date,
@@ -29,14 +29,14 @@ export class ShleemyInterval {
       past?: (value: number, interval: TimeIntervalLabel) => string;
     },
   ) {
-    this.direction =
+    this.tense =
       first.getTime() < toDate.getTime()
         ? "past"
         : first.getTime() === toDate.getTime()
         ? "present"
         : "future";
     this.diff =
-      this.direction === "future"
+      this.tense === "future"
         ? Math.abs(first.getTime() - toDate.getTime())
         : Math.abs(first.getTime() - toDate.getTime());
   }
@@ -176,7 +176,7 @@ export class ShleemyInterval {
         } ${ShleemyInterval.pluralInterval(value, interval)} ago`;
 
   get forHumans(): string {
-    if (this.diff === 0 || this.direction === "present") {
+    if (this.diff === 0 || this.tense === "present") {
       return "just now";
     }
 
@@ -187,7 +187,7 @@ export class ShleemyInterval {
       }`
     ];
 
-    return this.direction === "future"
+    return this.tense === "future"
       ? this.toFutureHumanReadable(value, fullIntervalName)
       : this.toPastHumanReadable(value, fullIntervalName);
   }
