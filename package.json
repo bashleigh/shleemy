@@ -1,7 +1,7 @@
 {
   "name": "shleemy",
   "version": "1.0.3",
-  "main": "src/index.ts",
+  "main": "./dist/index.js",
   "devDependencies": {
     "@types/jest": "^26.0.20",
     "jest": "^26.6.3",
