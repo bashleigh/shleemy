@@ -22,7 +22,7 @@ export class ShleemyInterval {
   readonly direction: "future" | "past" | "present";
   constructor(
     readonly first: Date,
-    readonly second: Date,
+    readonly toDate: Date,
     readonly rounding: "ceil" | "floor" = "floor",
     private readonly humanReadable?: {
       future?: (value: number, interval: TimeIntervalLabel) => string;
@@ -30,15 +30,15 @@ export class ShleemyInterval {
     },
   ) {
     this.direction =
-      first.getTime() < second.getTime()
+      first.getTime() < toDate.getTime()
         ? "past"
-        : first.getTime() === second.getTime()
+        : first.getTime() === toDate.getTime()
         ? "present"
         : "future";
     this.diff =
       this.direction === "future"
-        ? Math.abs(first.getTime() - second.getTime())
-        : Math.abs(first.getTime() - second.getTime());
+        ? Math.abs(first.getTime() - toDate.getTime())
+        : Math.abs(first.getTime() - toDate.getTime());
   }
 
   get seconds(): number {
