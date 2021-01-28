@@ -93,12 +93,19 @@ date.setDays(date.getDays() - 12);
 const interval = shleemy(date);
 
 console.log('seconds', interval.seconds);
+console.log('rounded seconds', interval.roundedSeconds);
 console.log('minutes', interval.minutes);
+console.log('rounded minutes', interval.roundedMinutes);
 console.log('hours', interval.hours);
+console.log('rounded hours', interval.roundedHours);
 console.log('days', interval.days);
+console.log('rounded days', interval.roundedDays);
 console.log('weeks', interval.weeks);
+console.log('rounded weeks', interval.roundedWeeks);
 console.log('months', interval.months);
+console.log('rounded months', interval.roundedMonths);
 console.log('years', interval.years);
+console.log('rounded years', interval.roundedYears);
 console.log('direction', interval.direction);
 ```
 > All properties will be positive values. You cannot have -3 days in the 4th dimension. Use `direction` for past/present/future value
