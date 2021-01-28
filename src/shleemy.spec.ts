@@ -35,6 +35,15 @@ describe("shleemyInterval", () => {
       expect(result).toBe("just now");
     });
 
+    it("milliseconds", () => {
+      const date = new Date();
+      date.setMilliseconds(date.getMilliseconds() - 900);
+      
+      const result = shleemy(date).forHumans;
+
+      expect(result).toBe("just now");
+    });
+
     it("seconds", () => {
       const date = new Date();
       date.setSeconds(new Date().getSeconds() - 20);

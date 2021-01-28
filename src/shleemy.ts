@@ -176,7 +176,7 @@ export class ShleemyInterval {
         } ${ShleemyInterval.pluralInterval(value, interval)} ago`;
 
   get forHumans(): string {
-    if (this.diff === 0 || this.tense === "present") {
+    if (this.diff <= IntervalValues.MILLISECONDS || this.tense === "present") {
       return "just now";
     }
 
