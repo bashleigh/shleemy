@@ -14,7 +14,20 @@ describe("shleemyInterval", () => {
         ).toBe("number");
       });
     });
+
+    it("toString", () => {
+      const result = shleemy(new Date());
+
+      expect(`added ${result}`).toBe("added just now");
+    });
+
+    it("ISO string input", () => {
+      const result = shleemy((new Date()).toISOString());
+
+      expect(result.forHumans).toBe("just now");
+    });
   });
+
   describe("past", () => {
     it("just now", () => {
       const result = shleemy(new Date()).forHumans;

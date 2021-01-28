@@ -89,6 +89,23 @@ date.setDays(date.getDays() - 12);
 console.log(shleemy(date).days); // 12
 console.log(shleemy(date).weeks); // 1
 ```
+
+### Output manipulation
+
+The Shleemy object can be used as a string! 
+
+```ts
+import { shleemy } from "shleemy";
+
+const date = new Date();
+date.setDays(date.getDays() - 12);
+
+const interval = shleemy(date);
+
+console.log(`added ${interval}`); // added 12 days ago;
+console.log(`${interval.replace('days', 'yonders')}`); // 12 yonders ago;
+```
+
 **Available properties**
 
 ```ts
