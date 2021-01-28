@@ -2,6 +2,7 @@
 <p>
   <img src="https://github.com/bashleigh/shleemy/workflows/Tests/badge.svg" alt="test badge"/>
   <a href="https://www.npmjs.com/package/shleemy"><img src="https://img.shields.io/npm/v/shleemy.svg"/></a>
+  <a href='https://coveralls.io/github/bashleigh/shleemy?branch=master'><img src='https://coveralls.io/repos/github/bashleigh/shleemy/badge.svg?branch=master' alt='Coverage Status' /></a>
 </p>
 
 <p>Simple human readable intervals for those that don't want to go to time prison.</p>
