@@ -77,7 +77,7 @@ import { shleemy } from "shleemy";
 const date = new Date();
 date.setHours(date.getHours() - 3);
 
-console.log(shleemy(date).days); // 3
+console.log(shleemy(date).hours); // 3
 ```
 
 ```ts
