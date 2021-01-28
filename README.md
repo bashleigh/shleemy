@@ -17,7 +17,7 @@
    - Mighty 
    - No dependencies
    - Easy to use
-   - You won't got to time prison for messing with time
+   - You won't go to time prison for messing with time
 </p>
 
 > Inspiration take from [Carbon](https://github.com/briannesbitt/carbon)
