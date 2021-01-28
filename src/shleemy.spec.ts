@@ -38,7 +38,7 @@ describe("shleemyInterval", () => {
     it("milliseconds", () => {
       const date = new Date();
       date.setMilliseconds(date.getMilliseconds() - 900);
-      
+
       const result = shleemy(date).forHumans;
 
       expect(result).toBe("just now");
