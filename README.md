@@ -5,7 +5,7 @@
 </p>
 
 <p>Simple human readable intervals for those that don't want to go to time prison.</p>
-<p>Interval diff package for human readable values</p>
+<p>Handy interval diff object for customisable, rounded, human readable phrases such as "in 3 days", "12 years ago", "a minute ago"</p>
 
 <p align="center">
   <a target="_blank" href="https://rickandmorty.fandom.com/wiki/Shleemypants">
@@ -83,7 +83,7 @@ date.setDays(date.getDays() - 12);
 console.log(shleemy(date).days); // 12
 console.log(shleemy(date).weeks); // 1
 ```
-**Available options**
+**Available properties**
 
 ```ts
 import { shleemy } from "shleemy";
