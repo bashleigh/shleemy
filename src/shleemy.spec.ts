@@ -6,9 +6,8 @@ describe("shleemyInterval", () => {
       const result = shleemy(new Date());
 
       Object.values(TimeIntervalLabel).forEach((property) => {
-        expect(typeof result[property].value).toBe('number');
-        expect(typeof result[property].ceil).toBe('number');
-        expect(typeof result[property].floor).toBe('number');
+        expect(typeof result[property]).toBe('number');
+        expect(typeof result[`rounded${property[0].toUpperCase() + property.substr(1)}`]).toBe('number');
       });
     });
   });

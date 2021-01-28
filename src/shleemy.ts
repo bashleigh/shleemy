@@ -17,20 +17,6 @@ enum IntervalValues {
   YEARS = 365,
 }
 
-class ShleemyValue {
-  constructor(readonly value: number, readonly interval: TimeIntervalLabel) {}
-
-  get ceil () {
-    return Math.ceil(this.value);
-  };
-  get floor () {
-    return Math.floor(this.value);
-  }
-
-  toString = (): number => this.value;
-  valueOf = (): number => this.value;
-}
-
 export class ShleemyInterval {
   readonly diff: number;
   readonly direction: "future" | "past" | "present";
@@ -55,70 +41,98 @@ export class ShleemyInterval {
         : Math.abs(first.getTime() - second.getTime());
   }
 
-  get seconds(): ShleemyValue {
-    return new ShleemyValue(this.diff / IntervalValues.MILLISECONDS, TimeIntervalLabel.SECONDS);
+  get seconds(): number {
+    return this.diff / IntervalValues.MILLISECONDS;
   }
 
-  get minutes(): ShleemyValue {
-    return new ShleemyValue(this.diff / (IntervalValues.MILLISECONDS * IntervalValues.SECONDS), TimeIntervalLabel.MINUTES);
+  get roundedSeconds(): number {
+    return Math[this.rounding](this.seconds);
   }
 
-  get hours(): ShleemyValue {
-    return new ShleemyValue((
+  get minutes(): number {
+    return this.diff / (IntervalValues.MILLISECONDS * IntervalValues.SECONDS);
+  }
+
+  get roundedMinutes(): number {
+    return Math[this.rounding](this.minutes);
+  }
+
+  get hours(): number {
+    return (
       this.diff /
       (IntervalValues.MILLISECONDS *
         IntervalValues.SECONDS *
         IntervalValues.SECONDS)
-    ), TimeIntervalLabel.HOURS);
+    );
   }
 
-  get days(): ShleemyValue {
-    return new ShleemyValue((
+  get roundedHours(): number {
+    return Math[this.rounding](this.hours);
+  }
+
+  get days(): number {
+    return (
       this.diff /
       (IntervalValues.MILLISECONDS *
         IntervalValues.SECONDS *
         IntervalValues.SECONDS) /
       IntervalValues.DAYS
-    ), TimeIntervalLabel.DAYS);
+    );
   }
 
-  get weeks(): ShleemyValue {
-    return new ShleemyValue((
+  get roundedDays(): number {
+    return Math[this.rounding](this.days);
+  }
+
+  get weeks(): number {
+    return (
       this.diff /
       (IntervalValues.MILLISECONDS *
         IntervalValues.SECONDS *
         IntervalValues.SECONDS) /
       IntervalValues.DAYS /
       IntervalValues.WEEKS
-    ), TimeIntervalLabel.WEEKS);
+    );
   }
 
-  get months(): ShleemyValue {
-    return new ShleemyValue((
+  get roundedWeeks(): number {
+    return Math[this.rounding](this.weeks);
+  }
+
+  get months(): number {
+    return (
       this.diff /
       (IntervalValues.MILLISECONDS *
         IntervalValues.SECONDS *
         IntervalValues.SECONDS) /
       IntervalValues.DAYS /
       IntervalValues.MONTHS
-    ), TimeIntervalLabel.MONTHS);
+    );
   }
 
-  get years(): ShleemyValue {
-    return new ShleemyValue((
+  get roundedMonths(): number {
+    return Math[this.rounding](this.months);
+  }
+
+  get years(): number {
+    return (
       this.diff /
       (IntervalValues.MILLISECONDS *
         IntervalValues.SECONDS *
         IntervalValues.SECONDS) /
       IntervalValues.DAYS /
       IntervalValues.YEARS
-    ), TimeIntervalLabel.YEARS);
+    );
+  }
+
+  get roundedYears(): number {
+    return Math[this.rounding](this.years);
   }
 
   get nearestInterval(): TimeIntervalLabel {
     let value;
     Object.values(TimeIntervalLabel).forEach(interval => {
-      if (this[interval][this.rounding] > 0) {
+      if (this[`rounded${interval[0].toUpperCase() + interval.substring(1)}`] > 0) {
         value = interval;
       }
     });
@@ -165,7 +179,7 @@ export class ShleemyInterval {
     }
 
     const fullIntervalName = this.nearestInterval;
-    const value = this[fullIntervalName][this.rounding];
+    const value = this[`rounded${fullIntervalName[0].toUpperCase() + fullIntervalName.substring(1)}`];
 
     return this.direction === "future"
       ? this.toFutureHumanReadable(value, fullIntervalName)
