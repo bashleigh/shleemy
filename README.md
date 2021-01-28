@@ -9,13 +9,14 @@
 
 <p align="center">
   <a target="_blank" href="https://rickandmorty.fandom.com/wiki/Shleemypants">
-    <img width="150" src="https://static.wikia.nocookie.net/rickandmorty/images/4/4d/Shleemy.png/revision/latest/scale-to-width-down/310?cb=20190830174941" alt="shleemypants"/>
+    <img align="right" width="150" src="https://static.wikia.nocookie.net/rickandmorty/images/4/4d/Shleemy.png/revision/latest/scale-to-width-down/310?cb=20190830174941" alt="shleemypants"/>
   </a>
-  - Small  
-  - Mighty  
-  - No dependencies  
-  - Easy to use  
-  - You won't got to time prison for messing with time  
+
+   - Small
+   - Mighty 
+   - No dependencies
+   - Easy to use
+   - You won't got to time prison for messing with time
 </p>
 
 > Inspiration take from [Carbon](https://github.com/briannesbitt/carbon)
