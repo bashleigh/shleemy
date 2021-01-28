@@ -6,7 +6,7 @@
 </p>
 
 <p>Simple human readable intervals for those that don't want to go to time prison.</p>
-<p>Handy interval diff object for customisable, rounded, human readable phrases such as "in 3 days", "12 years ago", "a minute ago".</p>
+<p>Handy interval diff object for customisable, rounded, human readable phrases such as "in 3 days", "12 years ago", "a minute ago", "just now".</p>
 
 <p align="center">
   <a target="_blank" href="https://rickandmorty.fandom.com/wiki/Shleemypants">
