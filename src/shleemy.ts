@@ -1,4 +1,4 @@
-enum TimeIntervalLabel {
+export enum TimeIntervalLabel {
   SECONDS = "seconds",
   MINUTES = "minutes",
   HOURS = "hours",
@@ -45,8 +45,16 @@ export class ShleemyInterval {
     return this.diff / IntervalValues.MILLISECONDS;
   }
 
+  get roundedSeconds(): number {
+    return Math[this.rounding](this.seconds);
+  }
+
   get minutes(): number {
     return this.diff / (IntervalValues.MILLISECONDS * IntervalValues.SECONDS);
+  }
+
+  get roundedMinutes(): number {
+    return Math[this.rounding](this.minutes);
   }
 
   get hours(): number {
@@ -58,6 +66,10 @@ export class ShleemyInterval {
     );
   }
 
+  get roundedHours(): number {
+    return Math[this.rounding](this.hours);
+  }
+
   get days(): number {
     return (
       this.diff /
@@ -66,6 +78,10 @@ export class ShleemyInterval {
         IntervalValues.SECONDS) /
       IntervalValues.DAYS
     );
+  }
+
+  get roundedDays(): number {
+    return Math[this.rounding](this.days);
   }
 
   get weeks(): number {
@@ -79,6 +95,10 @@ export class ShleemyInterval {
     );
   }
 
+  get roundedWeeks(): number {
+    return Math[this.rounding](this.weeks);
+  }
+
   get months(): number {
     return (
       this.diff /
@@ -88,6 +108,10 @@ export class ShleemyInterval {
       IntervalValues.DAYS /
       IntervalValues.MONTHS
     );
+  }
+
+  get roundedMonths(): number {
+    return Math[this.rounding](this.months);
   }
 
   get years(): number {
@@ -101,10 +125,14 @@ export class ShleemyInterval {
     );
   }
 
+  get roundedYears(): number {
+    return Math[this.rounding](this.years);
+  }
+
   get nearestInterval(): TimeIntervalLabel {
     let value;
     Object.values(TimeIntervalLabel).forEach(interval => {
-      if (Math[this.rounding](this[interval]) > 0) {
+      if (this[`rounded${interval[0].toUpperCase() + interval.substring(1)}`] > 0) {
         value = interval;
       }
     });
@@ -151,7 +179,7 @@ export class ShleemyInterval {
     }
 
     const fullIntervalName = this.nearestInterval;
-    const value = Math[this.rounding](this[fullIntervalName]);
+    const value = this[`rounded${fullIntervalName[0].toUpperCase() + fullIntervalName.substring(1)}`];
 
     return this.direction === "future"
       ? this.toFutureHumanReadable(value, fullIntervalName)
