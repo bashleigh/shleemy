@@ -5,9 +5,13 @@ describe("shleemyInterval", () => {
     it("values", () => {
       const result = shleemy(new Date());
 
-      Object.values(TimeIntervalLabel).forEach((property) => {
-        expect(typeof result[property]).toBe('number');
-        expect(typeof result[`rounded${property[0].toUpperCase() + property.substr(1)}`]).toBe('number');
+      Object.values(TimeIntervalLabel).forEach(property => {
+        expect(typeof result[property]).toBe("number");
+        expect(
+          typeof result[
+            `rounded${property[0].toUpperCase() + property.substr(1)}`
+          ],
+        ).toBe("number");
       });
     });
   });

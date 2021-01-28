@@ -5,12 +5,17 @@
 </p>
 
 <p>Simple human readable intervals for those that don't want to go to time prison.</p>
-<p>Handy interval diff object for customisable, rounded, human readable phrases such as "in 3 days", "12 years ago", "a minute ago"</p>
+<p>Handy interval diff object for customisable, rounded, human readable phrases such as "in 3 days", "12 years ago", "a minute ago".</p>
 
 <p align="center">
   <a target="_blank" href="https://rickandmorty.fandom.com/wiki/Shleemypants">
     <img width="150" src="https://static.wikia.nocookie.net/rickandmorty/images/4/4d/Shleemy.png/revision/latest/scale-to-width-down/310?cb=20190830174941" alt="shleemypants"/>
   </a>
+  - Small
+  - Mighty
+  - No dependencies
+  - Easy to use
+  - You won't got to time prison for messing with time
 </p>
 
 > Inspiration take from [Carbon](https://github.com/briannesbitt/carbon)

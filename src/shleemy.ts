@@ -132,7 +132,9 @@ export class ShleemyInterval {
   get nearestInterval(): TimeIntervalLabel {
     let value;
     Object.values(TimeIntervalLabel).forEach(interval => {
-      if (this[`rounded${interval[0].toUpperCase() + interval.substring(1)}`] > 0) {
+      if (
+        this[`rounded${interval[0].toUpperCase() + interval.substring(1)}`] > 0
+      ) {
         value = interval;
       }
     });
@@ -179,7 +181,11 @@ export class ShleemyInterval {
     }
 
     const fullIntervalName = this.nearestInterval;
-    const value = this[`rounded${fullIntervalName[0].toUpperCase() + fullIntervalName.substring(1)}`];
+    const value = this[
+      `rounded${
+        fullIntervalName[0].toUpperCase() + fullIntervalName.substring(1)
+      }`
+    ];
 
     return this.direction === "future"
       ? this.toFutureHumanReadable(value, fullIntervalName)
