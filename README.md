@@ -38,7 +38,7 @@ $ npm i shleemy
 
 ##### Basic
 
-Get human readable values with direction information
+Get human readable values with tense information
 
 **Present**
 ```ts
@@ -47,7 +47,7 @@ import { shleemy } from "shleemy";
 const interval = shleemy(new Date());
 
 console.log(interval.forHumans); // "just now"
-console.log(interval.direction); // "present"
+console.log(interval.tense); // "present"
 ```
 **Past**
 ```ts
@@ -57,7 +57,7 @@ const date = new Date();
 date.setMinutes(date.getMinutes() - 3);
 
 console.log(shleemy(date).forHumans); // "3 minutes ago"
-console.log(shleemy(date).direction); // "past"
+console.log(shleemy(date).tense); // "past"
 ```
 **Future**
 ```ts
@@ -67,7 +67,7 @@ const date = new Date();
 date.setMinutes(date.getMinutes() + 70);
 
 console.log(shleemy(date).forHumans); // "in an hour"
-console.log(shleemy(date).direction); // "future"
+console.log(shleemy(date).tense); // "future"
 ```
 
 ##### interval values
@@ -130,9 +130,9 @@ console.log('months', interval.months);
 console.log('rounded months', interval.roundedMonths);
 console.log('years', interval.years);
 console.log('rounded years', interval.roundedYears);
-console.log('direction', interval.direction);
+console.log('tense', interval.tense);
 ```
-> All properties will be positive values. You cannot have -3 days in the 4th dimension. Use `direction` for past/present/future value
+> All properties will be positive values. You cannot have -3 days in the 4th dimension. Use `tense` for past/present/future value
 
 ### Options
 
