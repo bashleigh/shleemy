@@ -78,7 +78,7 @@ import { shleemy } from "shleemy";
 const date = new Date();
 date.setHours(date.getHours() - 3);
 
-console.log(shleemy(date).hours); // 3
+console.log(shleemy(date).roundedHours); // 3
 ```
 
 ```ts
@@ -87,8 +87,8 @@ import { shleemy } from "shleemy";
 const date = new Date();
 date.setDays(date.getDays() - 12);
 
-console.log(shleemy(date).days); // 12
-console.log(shleemy(date).weeks); // 1
+console.log(shleemy(date).roundedDays); // 12
+console.log(shleemy(date).roundedWeeks); // 1
 ```
 
 ### Output manipulation
