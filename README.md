@@ -152,6 +152,7 @@ console.log(
     humanReadable: {
       past: (value, interval) => `${value} ${ShleemyInterval.pluralInterval(value, interval)} yonders ago`, // default: ShleemyInterval.toHumanReadablePast
       future: (value, interval) => `in ${value} ${ShleemyInterval.pluralInterval(value, interval)} and you get the idea`, // default: ShleemyInterval.toHumanReadableFuture
+      present: (value, interval) => `seconds ago!`, // default: "just now"
     }
   }).days
 ); // 8
