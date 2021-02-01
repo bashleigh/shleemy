@@ -17,7 +17,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bashleigh/carbon"
+    "url": "https://github.com/bashleigh/shleemy"
   },
   "description": "Human readable time manipulation. Turn '2021-01-27T22:36:54.757Z' into '6 weeks ago' without going to time prison.",
   "keywords": [
