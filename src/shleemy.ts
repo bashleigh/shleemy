@@ -27,6 +27,7 @@ export class ShleemyInterval {
     private readonly humanReadable?: {
       future?: (value: number, interval: TimeIntervalLabel) => string;
       past?: (value: number, interval: TimeIntervalLabel) => string;
+      present?: () => string;
     },
   ) {
     this.tense =
@@ -177,7 +178,9 @@ export class ShleemyInterval {
 
   get forHumans(): string {
     if (this.diff <= IntervalValues.MILLISECONDS || this.tense === "present") {
-      return "just now";
+      return this?.humanReadable?.present
+        ? this.humanReadable.present()
+        : "just now";
     }
 
     const fullIntervalName = this.nearestInterval;
@@ -213,6 +216,7 @@ export const shleemy = (
     humanReadable?: {
       future?: (value: number, interval: TimeIntervalLabel) => string;
       past?: (value: number, interval: TimeIntervalLabel) => string;
+      present?: () => string;
     };
   },
 ): ShleemyInterval => {

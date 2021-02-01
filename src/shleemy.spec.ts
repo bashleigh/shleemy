@@ -355,5 +355,20 @@ describe("shleemyInterval", () => {
 
       expect(interval.forHumans).toBe("2 long, fucking years, Morty.");
     });
+
+    it("present", () => {
+      const date = new Date();
+
+      const interval = shleemy(date, {
+        humanReadable: {
+          present: () => {
+            expect(true).toBeTruthy();
+            return `hello!`;
+          },
+        },
+      });
+
+      expect(interval.forHumans).toBe("hello!");
+    });
   });
 });
