@@ -21,7 +21,7 @@ export type humanReadableOptions = {
   future?: (value: number, interval: TimeIntervalLabel) => string;
   past?: (value: number, interval: TimeIntervalLabel) => string;
   present?: () => string;
-}
+};
 
 export class ShleemyInterval {
   readonly diff: number;
