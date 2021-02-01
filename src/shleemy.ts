@@ -17,6 +17,12 @@ enum IntervalValues {
   YEARS = 365,
 }
 
+export type humanReadableOptions = {
+  future?: (value: number, interval: TimeIntervalLabel) => string;
+  past?: (value: number, interval: TimeIntervalLabel) => string;
+  present?: () => string;
+}
+
 export class ShleemyInterval {
   readonly diff: number;
   readonly tense: "future" | "past" | "present";
@@ -24,11 +30,7 @@ export class ShleemyInterval {
     readonly first: Date,
     readonly toDate: Date,
     readonly rounding: "ceil" | "floor" = "floor",
-    private readonly humanReadable?: {
-      future?: (value: number, interval: TimeIntervalLabel) => string;
-      past?: (value: number, interval: TimeIntervalLabel) => string;
-      present?: () => string;
-    },
+    private readonly humanReadable?: humanReadableOptions,
   ) {
     this.tense =
       first.getTime() < toDate.getTime()
@@ -213,11 +215,7 @@ export const shleemy = (
   options?: {
     toDate?: Date | string;
     rounding?: "ceil" | "floor";
-    humanReadable?: {
-      future?: (value: number, interval: TimeIntervalLabel) => string;
-      past?: (value: number, interval: TimeIntervalLabel) => string;
-      present?: () => string;
-    };
+    humanReadable?: humanReadableOptions;
   },
 ): ShleemyInterval => {
   return new ShleemyInterval(
