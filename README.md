@@ -143,7 +143,7 @@ const date = new Date();
 date.setDays(date.getDays() - 12);
 
 const toDate = new Date();
-toDate.setDats(toDate.getDays() - 20);
+toDate.setDays(toDate.getDays() - 20);
 
 console.log(
   shleemy(date, {
