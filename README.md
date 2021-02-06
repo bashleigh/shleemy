@@ -91,6 +91,19 @@ console.log(shleemy(date).roundedDays); // 12
 console.log(shleemy(date).roundedWeeks); // 1
 ```
 
+##### Basic Formatting
+
+```ts
+const date = new Date();
+date.setDays(date.getDays() - 12);
+
+const interval = shleemy(date);
+
+console.log(interval.time); // 12:34
+console.log(interval.date); // 12/03/2021
+```
+> No locale as of now, so you backwards date people will have to do with day/month/year. Soz
+
 ### Output manipulation
 
 The Shleemy object can be used as a string! 
