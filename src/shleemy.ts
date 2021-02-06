@@ -197,6 +197,24 @@ export class ShleemyInterval {
       : this.toPastHumanReadable(value, fullIntervalName);
   }
 
+  get date(): string {
+    return `${this.first.getDate().toString().padStart(2, "0")}/${(
+      this.first.getMonth() + 1
+    )
+      .toString()
+      .padStart(2, "0")}/${this.first.getFullYear()}`;
+  }
+
+  get time(): string {
+    return `${this.first
+      .getHours()
+      .toString()
+      .padStart(2, "0")}:${this.first
+      .getMinutes()
+      .toString()
+      .padStart(2, "0")}`;
+  }
+
   toString(): string {
     return this.forHumans;
   }
